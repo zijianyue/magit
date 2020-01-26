@@ -2,9 +2,12 @@
 *~
 /*.tar
 /*.tar.gz
+/Documentation/*.aux
 /Documentation/*.epub
 /Documentation/*.html
 /Documentation/*.info
+/Documentation/*.log
+/Documentation/*.out
 /Documentation/*.pdf
 /Documentation/META-INF/
 /Documentation/OEBPS/

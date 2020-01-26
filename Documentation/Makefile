@@ -13,6 +13,7 @@ info: $(INFOPAGES) dir
 html: $(HTMLFILES)
 pdf:  $(PDFFILES)
 epub: $(EPUBFILES)
+refcard: $(REFCARDS)
 
 %.info: %.texi
 	@printf "Generating $@\n"
@@ -60,6 +61,10 @@ html-dir: $(TEXIFILES)
 	@zip -X --quiet --recurse-paths -0 $@ mimetype
 	@zip -X --quiet --recurse-paths -9 --no-dir-entries $@ META-INF OEBPS
 	@$(RMDIR) $(EPUBTRASH)
+
+magit-refcard.pdf: magit-refcard.tex
+	@printf "Generating $@\n"
+	pdflatex $<
 
 ## Install ###########################################################
 
@@ -141,6 +146,10 @@ publish-stats: stats
 	@printf "Generating CDN invalidation\n"
 	@aws cloudfront create-invalidation \
 	--distribution-id $(CFRONT_DIST) --paths "/stats/*" > /dev/null
+
+publish-refcard: refcard
+	# TODO
+	@printf "Uploading refcard...\n"
 
 publish-manuals: $(PUBLISH_TARGETS)
 	@printf "Uploading manuals... $(PUBLISH_TARGETS)\n"

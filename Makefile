@@ -27,6 +27,7 @@ help:
 	$(info make html-dir         - generate html manual directories)
 	$(info make pdf              - generate pdf manuals)
 	$(info make epub             - generate epub manuals)
+	$(info make refcard          - generate refcard)
 	$(info )
 	$(info Install)
 	$(info =======)
@@ -60,6 +61,7 @@ help:
 	$(info make stats            - regenerate statistics)
 	$(info make authors          - regenerate AUTHORS.md)
 	$(info make publish-stats    - publish statistics)
+	$(info make publish-refcard  - publish refcard)
 	$(info make publish-manuals  - publish snapshot manuals)
 	$(info make release-manuals  - publish release manuals)
 	$(info make dist             - create tarballs)
@@ -89,6 +91,9 @@ pdf:
 
 epub:
 	@$(MAKE) -C Documentation epub
+
+refcard:
+	@$(MAKE) -C Documentation refcard
 
 ## Install ###########################################################
 
@@ -158,6 +163,9 @@ authors:
 
 publish-stats:
 	@$(MAKE) -C Documentation publish-stats
+
+publish-refcard:
+	@$(MAKE) -C Documentation publish-refcard
 
 publish-manuals:
 	@$(MAKE) -C Documentation publish-manuals

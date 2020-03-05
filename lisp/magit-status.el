@@ -397,8 +397,8 @@ Type \\[magit-commit] to create a commit.
     (setq directory default-directory))
   (magit--tramp-asserts directory)
   (let* ((default-directory directory)
-         (d (magit-diff--get-value 'magit-status-mode))
-         (l (magit-log--get-value  'magit-status-mode))
+         (d (magit-diff--get-value 'magit-status-mode 'always))
+         (l (magit-log--get-value  'magit-status-mode 'always))
          (file (and magit-status-goto-file-position
                     (magit-file-relative-name)))
          (line (and file (line-number-at-pos)))

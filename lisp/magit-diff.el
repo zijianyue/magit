@@ -822,6 +822,9 @@ and `:slant'."
 (defclass magit-module-section (magit-file-section)
   ())
 
+(defclass magit-diffstat-file-section (magit-file-section)
+  ())
+
 (defclass magit-hunk-section (magit-section)
   ((refined     :initform nil)
    (combined    :initform nil)
@@ -1942,6 +1945,14 @@ Staging and applying changes is documented in info node
     map)
   "Keymap for `file' sections.")
 
+(defvar magit-diffstat-file-section-map
+  (let ((map (make-sparse-keymap)))
+    (set-keymap-parent map magit-diff-section-base-map)
+    (define-key map "\C-c\C-t" nil)
+    (define-key map "\C-c\C-e" nil)
+    map)
+  "Keymap for `file' sections.")
+
 (defvar magit-hunk-section-map
   (let ((map (make-sparse-keymap)))
     (set-keymap-parent map magit-diff-section-base-map)
@@ -2075,7 +2086,7 @@ section or a child thereof."
                 (setq ld (length file))
                 (when (> le ld)
                   (setq sep (concat (make-string (- le ld) ?\s) sep))))
-              (magit-insert-section (file (pop files))
+              (magit-insert-section (diffstat-file (pop files))
                 (insert (propertize file 'font-lock-face 'magit-filename)
                         sep cnt " ")
                 (when add

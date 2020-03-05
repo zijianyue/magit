@@ -1931,6 +1931,8 @@ Staging and applying changes is documented in info node
     (define-key map [remap magit-revert-no-commit] 'magit-reverse)
     (define-key map "a" 'magit-apply)
     (define-key map "C" 'magit-commit-add-log)
+    (define-key map (kbd "C-x a")   'magit-add-change-log-entry)
+    (define-key map (kbd "C-x 4 a") 'magit-add-change-log-entry-other-window)
     (define-key map "s" 'magit-stage)
     (define-key map "u" 'magit-unstage)
     (define-key map "&" 'magit-do-async-shell-command)
@@ -1950,6 +1952,8 @@ Staging and applying changes is documented in info node
     (set-keymap-parent map magit-diff-section-base-map)
     (define-key map "\C-c\C-t" nil)
     (define-key map "\C-c\C-e" nil)
+    (define-key map "\C-xa" nil)
+    (define-key map "\C-x4a" nil)
     map)
   "Keymap for `file' sections.")
 
